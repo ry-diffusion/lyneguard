@@ -1,1 +1,0 @@
-savedcmd_/home/kai/Sources/lyneguard/kernel_shim/Module.symvers :=  scripts/mod/modpost -M        -o /home/kai/Sources/lyneguard/kernel_shim/Module.symvers -n -T /home/kai/Sources/lyneguard/kernel_shim/modules.order -i Module.symvers -e 
