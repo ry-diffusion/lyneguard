@@ -1,0 +1,1 @@
+savedcmd_/home/kai/Sources/lyneguard/kernel_shim/loader.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o /home/kai/Sources/lyneguard/kernel_shim/loader.ko /home/kai/Sources/lyneguard/kernel_shim/loader.o /home/kai/Sources/lyneguard/kernel_shim/loader.mod.o
