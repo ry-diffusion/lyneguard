@@ -4,7 +4,7 @@ PWD = $(shell pwd)
 
 LYNEGUARD ?= lyneguard_blob.o
 
-lyneguard-objs := manifest.o kcl.o $(LYNEGUARD)
+lyneguard-objs := manifest.o kcl.o ioctl_defs.o $(LYNEGUARD)
 
 KDIR := /lib/modules/$(shell uname -r)/build
 
