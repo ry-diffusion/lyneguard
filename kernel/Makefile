@@ -1,20 +1,20 @@
-obj-m += lyneguard.o
-BUILD_PROFILE ?= debug
-PWD = $(shell pwd)
+CONFIG_MODULE_SIG=n
 
-LYNEGUARD ?= lyneguard_blob.o
+obj-m       += lyneguard.o
+LYNEGUARD   ?= lgcombined.o
+lyneguard-y := manifest.o kcl.o ioctl_defs.o $(LYNEGUARD)
+SRCDIR      ?= $(shell pwd)
 
-lyneguard-objs := manifest.o kcl.o ioctl_defs.o $(LYNEGUARD)
-
-KDIR := /lib/modules/$(shell uname -r)/build
+KDIR ?= /lib/modules/$(shell uname -r)/build
 
 .PHONY: lyneguard.ko
 
-lyneguard.ko: 
-	$(MAKE) -C $(KDIR) M=$(PWD) SRCDIR=$(PWD) modules
+lyneguard.ko: .$(SRCDIR)/$(LYNEGUARD).cmd
+	$(MAKE) -C $(KDIR) M=$$PWD SRCDIR=$$PWD modules
 
-$(SRCDIR)/$(LYNEGUARD):
-$(LYNEGUARD):
+.$(SRCDIR)/$(LYNEGUARD).cmd:
+	echo > $(SRCDIR)/.$(LYNEGUARD).cmd
 
 clean:
-	$(MAKE) -C $(KDIR) M=$(PWD) clean
+	$(MAKE) -C $(KDIR) M=$$PWD clean 
+	rm *_shipped

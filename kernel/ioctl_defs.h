@@ -1,3 +1,3 @@
 #pragma once
 
-const extern int IOCTL_LYNE_QUERYSTATUS;
+extern const unsigned int IOCTL_LYNE_QUERYSTATUS;

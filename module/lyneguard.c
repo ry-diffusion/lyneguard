@@ -9,11 +9,12 @@ unsigned int lyne_init(void) {
   kcl_log_info("lyneguard: Hello world from module!");
 
   lyneguardClass = kcl_register_class("LyneGuard");
-
-  if (lyneguardClass < 0) {
+  /*
+ if (lyneguardClass =0) {
     kcl_log_info("lyneguard: unable to register lyne control class!");
     return -1;
   }
+  */
 
   if ((major = kcl_alloc_device(0, LYNEGUARD_CTRL_NAME,
                                 &lyneDeviceOperations)) < 0) {

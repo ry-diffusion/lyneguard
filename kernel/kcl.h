@@ -6,7 +6,7 @@ typedef unsigned long KPtr;
 typedef void *KFile;
 typedef void *KClass;
 typedef void *KDevice;
-typedef unsigned int KMajor;
+typedef int KMajor;
 
 /**
  * @brief Log a information

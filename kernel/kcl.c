@@ -7,6 +7,7 @@
 #include <linux/init.h>
 #include <linux/module.h>
 #include <linux/version.h>
+#include <linux/slab.h>
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(6, 2, 0)
 #define KClassCreate(x) class_create(THIS_MODULE, x)
@@ -18,11 +19,13 @@ void kcl_log_info(str content) { printk("%s%s", KERN_INFO, content); }
 
 int kcl_alloc_device(KMajor major, str name,
                      unique(IoOperations) ioOperations) {
+  struct file_operations *fops;
 
   ioOperations->kInformation =
       kmalloc(sizeof(struct file_operations), GFP_KERNEL);
 
-  struct file_operations *fops =
+ 
+  fops =
       (struct file_operations *)ioOperations->kInformation;
 
   fops->unlocked_ioctl = (long (*)(struct file *, Uint32 cmd, Uint64 arg))(

@@ -1,8 +1,12 @@
 .PHONY: module kernel
 
 kernel: module
-	cp module/build/liblyneguard.a kernel/liblyneguard.a
-	make -C kernel LYNEGUARD=liblyneguard.a lyneguard.ko
+	cp module/lyne_combined.o kernel/lgcombined.o_shipped
+	make -C kernel LYNEGUARD=lgcombined.o lyneguard.ko
 
 module:
-	cd module; 	cmake -B build; cmake --build build
+	make -C module
+
+clean:
+	make -C module clean
+	make -C kernel clean
