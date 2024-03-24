@@ -1,6 +1,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <sys/ioctl.h>
+#include <unistd.h>
 
 const int IOCTL_LYNE_GET_STATUS = _IOR('k', 1, int);
 
